@@ -1,9 +1,5 @@
-#include <sqlite3.h>
 #include <iostream>
-#include <string>
 #include "database.h"
-#include "authenticate.h"
-#include <cstring>
 
 using namespace std;
 

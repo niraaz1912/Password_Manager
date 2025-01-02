@@ -1,9 +1,8 @@
-#include <iostream>
 #include "database.h"
 #include "authenticate.h"
+#include <iostream>
 
 using namespace std;
-
 
 int main(int argc, char* argv[]) {
     sqlite3* db = initialize_database(nullptr);
@@ -12,7 +11,8 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    if (authenticate(db) == 2) {
+    int authStatus = authenticate(db);
+    if (authStatus == 2) {  // Login successful
         int choice;
         do {
             cout << "\n1. Store a website password\n2. View stored passwords\n3. Exit\nChoose an option: ";
@@ -42,9 +42,9 @@ int main(int argc, char* argv[]) {
                 }
             }
         } while (choice != 3);
-    } else if (authenticate(db) == 1){
-        cout << "Login using your registered password!" << endl;
-    }else {
+    } else if (authStatus == 1) {  // Registration successful
+        cout << "Registration successful! Please log in to proceed." << endl;
+    } else {
         cerr << "Authentication failed." << endl;
     }
 

@@ -1,10 +1,5 @@
 #include <iostream>
-#include <string>
 #include "authenticate.h"
-#include "database.h"
-#include <cstring>
-
-using namespace std;
 
 string globalMasterKey;
 
