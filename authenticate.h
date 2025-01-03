@@ -14,5 +14,6 @@ string decryptPassword(const string& ciphertext, const unsigned char* key, const
 string encryptPassword(const string& plaintext, const unsigned char* key, unsigned char* iv);
 string getMasterKey();
 int getUserId();
+string deriveKey(const string& password, const unsigned char* salt);
 
 #endif // AUTHENTICATE_H

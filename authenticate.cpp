@@ -84,7 +84,9 @@ string decryptPassword(const string& ciphertext, const unsigned char* key, const
     return plaintext;
 }
 
-string deriveKey(const string& password, const unsigned char* salt, int keyLength = 16, int iterations = 100000) {
+string deriveKey(const string& password, const unsigned char* salt) {
+    int keyLength = 16;
+    int iterations = 100000;
     unsigned char key[EVP_MAX_KEY_LENGTH];
     if (!PKCS5_PBKDF2_HMAC_SHA1(password.c_str(), password.size(), salt, 16, iterations, keyLength, key)) {
         throw runtime_error("Key derivation failed.");
